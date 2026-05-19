@@ -1,0 +1,44 @@
+{
+  "name": "@munity/anchor-idl-compat",
+  "version": "0.1.0",
+  "description": "Small Anchor IDL compatibility helpers for converting Anchor 0.30+ IDLs to Anchor 0.28 legacy shape.",
+  "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "vitest run src/__tests__/anchor-idl-compat.test.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "README.md",
+    "src/*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Munity-Clubs/anchor-idl-compat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Munity-Clubs/anchor-idl-compat/issues"
+  },
+  "homepage": "https://github.com/Munity-Clubs/anchor-idl-compat#readme",
+  "license": "MIT",
+  "keywords": [
+    "solana",
+    "anchor",
+    "idl",
+    "anchor-lang",
+    "compatibility",
+    "web3"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.18 <23"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.5"
+  }
+}
