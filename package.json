@@ -1,5 +1,5 @@
 {
-  "name": "@munity/anchor-idl-compat",
+  "name": "@munityclubs/anchor-idl-compat",
   "version": "0.1.0",
   "description": "Small Anchor IDL compatibility helpers for converting Anchor 0.30+ IDLs to Anchor 0.28 legacy shape.",
   "type": "module",

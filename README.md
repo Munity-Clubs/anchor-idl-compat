@@ -1,4 +1,4 @@
-# @munity/anchor-idl-compat
+# @munityclubs/anchor-idl-compat
 
 Small Anchor IDL compatibility helpers for JavaScript clients pinned to older
 Anchor versions.
@@ -10,13 +10,13 @@ converter rewrites the newer IDL shape into the legacy shape expected by older
 ## Install
 
 ```bash
-npm install @munity/anchor-idl-compat
+npm install @munityclubs/anchor-idl-compat
 ```
 
 ## Usage
 
 ```js
-import { toLegacyIdl } from "@munity/anchor-idl-compat";
+import { toLegacyIdl } from "@munityclubs/anchor-idl-compat";
 import rawIdl from "./target/idl/my_program.json" assert { type: "json" };
 
 const idl = toLegacyIdl(rawIdl);

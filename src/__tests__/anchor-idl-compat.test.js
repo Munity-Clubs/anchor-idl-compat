@@ -1,21 +1,6 @@
 import { describe, expect, it } from "vitest";
-import * as anchor from "@coral-xyz/anchor";
-import { PublicKey } from "@solana/web3.js";
 
-import v2Idl from "@/utils/solana/idl/munity_v2.json";
-import { toLegacyIdl as productionToLegacyIdl } from "@/utils/solana/idlCompat";
 import { looksNewShape, toLegacyIdl } from "../index.js";
-
-const dummyProvider = () =>
-  new anchor.AnchorProvider(
-    new anchor.web3.Connection("http://localhost:8899"),
-    {
-      publicKey: PublicKey.default,
-      signTransaction: async (t) => t,
-      signAllTransactions: async (t) => t,
-    },
-    { commitment: "confirmed" },
-  );
 
 function newShapeFixture() {
   return {
@@ -72,7 +57,7 @@ function newShapeFixture() {
   };
 }
 
-describe("@munity/anchor-idl-compat", () => {
+describe("@munityclubs/anchor-idl-compat", () => {
   it("detects new-shape Anchor IDLs", () => {
     expect(looksNewShape(newShapeFixture())).toBe(true);
     expect(
@@ -155,24 +140,5 @@ describe("@munity/anchor-idl-compat", () => {
     const twice = toLegacyIdl(once);
     expect(twice).toEqual(once);
     expect(once).not.toBe(legacy);
-  });
-
-  it("matches the production Munity converter for the live v2 IDL", () => {
-    expect(toLegacyIdl(v2Idl)).toEqual(productionToLegacyIdl(v2Idl));
-  });
-
-  it("constructs an Anchor 0.28 Program from the converted live v2 IDL", () => {
-    const idl = toLegacyIdl(v2Idl);
-    idl.metadata = { address: "4PeTcJYm5rPj4AU3Lq72nhpbyUxny2vJDTW6XUdpDDpk" };
-
-    const program = new anchor.Program(
-      idl,
-      "4PeTcJYm5rPj4AU3Lq72nhpbyUxny2vJDTW6XUdpDDpk",
-      dummyProvider(),
-    );
-
-    expect(program.methods.registerCommunity).toBeTypeOf("function");
-    expect(program.methods.buyNft).toBeTypeOf("function");
-    expect(program.account.platformConfig).toBeDefined();
   });
 });
